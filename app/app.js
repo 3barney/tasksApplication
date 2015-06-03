@@ -8,14 +8,16 @@ app.controller('tasksController', function($scope, $http) {
         $scope.tasks = data;
        });
   };
+  
   $scope.addTask = function (task) {
     $http.post("phpfiles/addTask.php?task="+task).success(function(data){
         getTask();
         $scope.taskInput = "";
       });
   };
+
   $scope.deleteTask = function (task) {
-    if(confirm("Are you sure to delete this line?")){
+    if(confirm("Are you sure to delete this task?")){
     $http.post("phpfiles/deleteTask.php?taskID="+task).success(function(data){
         getTask();
       });
